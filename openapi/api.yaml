@@ -3,7 +3,7 @@ info:
   title: Karelia API Programming - OpenAPI 3.1.0 Demonstration
   description: |-
     This is a sample OpenAPI OAD.
-    
+
     Some useful links:
     - [Learn OpenAPI](https://learn.openapis.org)
     - [OpenAPI Specification](https://learn.openapis.org/)
@@ -21,7 +21,8 @@ security:
 
 servers:
   - url: http://localhost:3000
-  
+  - url: https://antti123456.westeurope.cloudapp.azure.com
+
 tags:
   - name: Sample dataset
     description: Everything you need to know about APIs
@@ -37,15 +38,15 @@ paths:
       summary: Returns a dataset
       description: Returns a dataset with something more blaah...
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Data'
-        '415':
+                  $ref: "#/components/schemas/Data"
+        "415":
           description: Unsupported media type
 
 components:
@@ -62,10 +63,10 @@ components:
           type: string
           examples:
             - Roy
-          
+
         surname:
           type: string
-          examples: [ Fielding ]
+          examples: [Fielding]
 
   securitySchemes:
     bearerAuth: # arbitrary name for the security scheme
