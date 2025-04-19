@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/rows/:count", async (req, res) => {
+router.post("/rows/:count", async (req, res) => {
   res.json(await addDataRows(req.params.count));
 });
 
