@@ -49,7 +49,8 @@ const addData = ({ id, Firstname, Surname, userid }) =>
   );
 
 const addDataRows = async (rowCount) => {
-  const res = await sendQuery(`CALL addRows(?)`);
+  const res = await sendQuery(`CALL addRows(?)`, [rowCount]);
+  return res[0];
 };
 /*
 const getUserByName = (username) => 

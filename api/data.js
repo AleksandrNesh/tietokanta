@@ -22,7 +22,18 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/rows/:count", async (req, res) => {
-  res.json(await addDataRows(req.params.count));
+  const count = parseInt(req.params.count);
+  if (isNaN(count) || count <= 0) {
+    return res.status(400).json({ error: "Invalid row count" });
+  }
+
+  try {
+    const result = await addDataRows(count);
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  }
 });
 
 export default router;
