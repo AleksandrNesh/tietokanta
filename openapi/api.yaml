@@ -21,7 +21,7 @@ security:
 
 servers:
   - url: http://localhost:3000
-  - url: https://antti123456.westeurope.cloudapp.azure.com
+  - url: https://aleksandr2102370.northeurope.cloudapp.azure.com
 
 tags:
   - name: Sample dataset
