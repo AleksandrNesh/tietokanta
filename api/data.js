@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllData, getDataById, addData, addDataRows } from "../mongodb.js";
+import { getAllData, getDataById, addData, getUserData } from "../mongodb.js";
 let router = Router();
 
 router.get("/", async (req, res) => {
@@ -33,6 +33,27 @@ router.post("/rows/:count", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Database error" });
+  }
+});
+
+//router for tehtävä 11
+
+router.get("/users-data", async (req, res) => {
+  console.log("Received request for /users-data");
+
+  try {
+    const result = await getUserData();
+    console.log("User data retrieved:", result);
+
+    if (!result || result.length === 0) {
+      console.log("No data found for users.");
+      return res.status(404).json({ error: "No user data found" });
+    }
+
+    res.json(result);
+  } catch (error) {
+    console.error("Error during getUserData:", error);
+    res.status(500).json({ error: "An error occurred while fetching data" });
   }
 });
 
